@@ -1,0 +1,5 @@
+- import_tasks: formatDisk.yml
+- import_tasks: installArch.yml
+- import_tasks: systemsetting.yml 
+
+

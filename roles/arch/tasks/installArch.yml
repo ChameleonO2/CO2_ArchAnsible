@@ -1,0 +1,8 @@
+- name: "install ArchBase"
+  command: "pacstrap /mnt base linux linux-firmware"
+
+- name: "install service"
+  command: "pacstrap /mnt perl vim dhcpcd openssh grub efibootmgr"
+
+- name: "create fstab"
+  command: "genfstab -U /mnt >> /mnt/etc/fstab"

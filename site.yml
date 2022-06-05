@@ -1,0 +1,7 @@
+- name: Playbook
+  hosts:
+        - "arch"
+  vars_files:
+        - "host_vars/password"
+  roles:
+        - arch

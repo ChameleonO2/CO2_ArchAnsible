@@ -1,0 +1,24 @@
+- name: "create partition table"
+  command: "parted --script --align optimal /dev/sda -- mklabel gpt"
+
+- name: "create boot partiton"
+  command: "parted --script --align optimal /dev/sda -- mkpart ESP fat32 1MiB 513MiB"
+
+- name: "set boot partition"
+  command: "parted --script --align optimal /dev/sda -- set 1 esp on"
+
+- name: "create / partition"
+  command: "parted --script --align optimal /dev/sda -- mkpart ext4  513MiB 100%"
+
+- name: "format /boot partition"
+  command: "mkfs.fat -F 32 /dev/sda1"
+
+
+- name: "format / partition"
+  command: "mkfs.ext4 /dev/sda2"
+
+- name: "mount root"
+  command: "mount /dev/sda2 /mnt"
+
+- name:  "mount boot"
+  command: "mount --mkdir /dev/sda1 /mnt/boot"
